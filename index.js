@@ -9,15 +9,7 @@ app.get("/",function(req,resp){
         title: "home"
     });
 })
-let config="mysql://avnadmin:AVNS_qIDYZtQaSaRx7eC6-Qh@mysql-14aeef26-anshugarg964-a0c4.k.aivencloud.com:14737/defaultdb"
-let sj=mysql2.createConnection(config);
-sj.connect(function(err)
-{
-    if(err==null)
-        console.log("Connected sir");
-    else
-    console.log(err.message);
-})
+
 app.use(express.static("public"));
 app.use(express.urlencoded(true));
 app.get("/signup",function(req,resp){

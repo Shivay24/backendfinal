@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/booking.css">
+    <script src="https://kit.fontawesome.com/485fa11d9e.js" crossorigin="anonymous"></script>
+	<title>Booking Form</title>
+	<script>
+		function validateForm() {
+			if (isEmpty(document.getElementById('data_3').value.trim())) {
+				alert('First name is required!');
+				return false;
+			}
+			if (isEmpty(document.getElementById('data_4').value.trim())) {
+				alert('Last name is required!');
+				return false;
+			}
+			if (!validateEmail(document.getElementById('data_5').value.trim())) {
+				alert('Email must be a valid email address!');
+				return false;
+			}
+			return true;
+		}
+		function isEmpty(str) { return (str.length == 0 || !str.trim()); }
+		function validateEmail(email) {
+			var re = "";
+			return isEmpty(email) || re.test(email);
+		}
+	</script>
+   
+</head>
+<body>
+	<div class="main">
+            <%- include('partials/header') %>
+	</div>
+	<h1>Tour Booking</h1>
+	<div class="container">
+		<form  name="form">
+			<div class="textbox">
+				<input type="text" placeholder="First Name" name="ffname" id="ffname" value=""  onkeypress="return /[a-zA-Z]/i.test(event.key)" required>  
+			</div>
+
+			<div class="textbox">
+				<input type="text" placeholder="Last Name" name="flast" id="flast" value="" onkeypress="return /[a-zA-Z]/i.test(event.key)" required> 
+			</div>
+
+			<div class="textbox">
+				<input type="text" placeholder="Email" name="femail" id="femail" value="" required pattern="[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9-]+.[a-z]{2,4}" title="Invalid Email">
+			</div>
+
+			<div class="textbox">
+				<input type="text" placeholder="City" name="city" id="city" value="" onkeypress="return /[a-zA-Z]/i.test(event.key)" required>
+			</div>
+
+			<div class="textbox">
+				<input type="text" placeholder="Phone" name="fphone" id="fphone" value="" onkeypress="return /[0-9]/i.test(event.key)" maxlength="10" pattern="([0-9]){10,}" required>
+			</div>
+
+			<div class="textbox">
+				<input type="text" placeholder="Destination" name="fdesti" id="fdesti" value="" required>
+			</div>
+			<div class="btn">
+				<input name="submit" value="Submit" type="submit" formaction="/book">
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

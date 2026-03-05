@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Sign Up Form </title>
+  <meta name="viewport" content="width= device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/signup.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/485fa11d9e.js" crossorigin="anonymous"></script>
+    <script>
+       $(document).ready(function () {
+    $("#txtEmail").keyup(function () {
+      let email = $("#txtEmail").val();
+      let exp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      let response = exp.test(email);
+      if (response == true) {
+          $(".errorEmail")
+              .html("valid")
+              .addClass("valid")
+              .removeClass("invalid");
+      } else {
+          $(".errorEmail")
+              .html("Invalid")
+              .addClass("invalid")
+              .removeClass("valid");
+      }
+  });
+  $("#txtpassword").keyup(function () {
+      let password = $("#txtpassword").val();
+      let pwd = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{6,15})/;
+      let response = pwd.test(password);
+      if (response == true) {
+          $(".errorPwd")
+              .html("STRONG")
+              .addClass("valid")
+              .removeClass("invalid");
+      } else {
+          $(".errorPwd")
+              .html("WEAK")
+              .addClass("invalid")
+              .removeClass("valid");
+      }
+  });
+})
+</script>
+<style>
+  .abcd{
+    background-image: url(../fpf/images/);
+    width: 70px;
+    height: 70px;
+    background-size: contain;
+  }
+</style>
+  </head>
+
+
+<body>
+
+<form method="POST" action="/signupd">
+   <a href="/"><div class="abcd"> <i class="fa-solid fa-arrow-left fa-3x"></i></div></a>
+    
+
+    <div class="login-box">
+
+      <h1> Sign Up </h1>
+
+      <div class="textbox">
+        <input type="text" placeholder="Username" id="txtuname" name="txtuname" value="" required>  
+      </div>
+
+      <div class="textbox">
+        <input type="password" placeholder="Password" id="txtpassword" name="txtpassword" value="" maxlength="15"   required>
+        <div class="errorPwd" style="color: white;">*</div>
+      </div>
+
+      <div class="textbox">
+        <input type="text" placeholder="Email" id="txtEmail" name="txtEmail" value=""  title="Invalid Email">
+        <div class="errorEmail" style="color: white;">*</div>
+      </div>
+     
+
+      <div class="textbox">
+        <input type="text" placeholder="City" id="txtcity" name="txtcity" value="" required>
+      </div>
+
+      <div class="textbox">
+        <input type="text" placeholder="Phone" id="txtphone" name="txtphone" value="" required onkeypress="return /[0-9]/i.test(event.key)" maxlength="10" pattern="([0-9]){10,}">
+      </div>
+
+      <input class="btn" type="submit" value="Sign Up"> <br> <br>
+
+      <center><a href="/signin"> Already have an account ?Sign in</a></center>
+
+    </div>
+    
+  </form>
+
+</body>
+</html>

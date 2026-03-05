@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Feedback Form</title>
+	<link rel="stylesheet" type="text/css" href="css/feedback.css">
+</head>
+<body>
+	<div class="main">
+            <%- include('partials/header') %>
+	</div>
+	<div class="feedback">
+		<h1>Feedback Form</h1>
+		<form name='feedbackForm' >
+			<div class="form-group">
+			    <label>Your Name</label>
+			    <input type="text" name="uname" id="uname" class="form-control" id="inputText" placeholder="Your Name" required>
+			</div>
+			<div class="form-group">
+			    <label>Your Email</label>
+			    <input type="email" name="txtemail" id="txtemail" class="form-control" id="inputEmail" placeholder="Your Email" required>
+			</div>
+			<div class="form-group text1">
+			    <label>Feedback:</label>
+			    <textarea class="inputTextarea" name="feedback" id="feedback" rows="4" class="form-control" ng-model='feedback' placeholder="Please write your Feedback here" required></textarea>
+			</div>
+			<div class="wrapper">
+				<button type="submit" class="btn btn-primary" ng-click="performValidation()" name='submit' formaction="/feed">Submit Feedback</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

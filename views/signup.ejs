@@ -60,7 +60,7 @@
 
 <body>
 
-<form method="POST" action="/signupd">
+<form method="POST" action="/signupd" enctype="multipart/form-data">
    <a href="/"><div class="abcd"> <i class="fa-solid fa-arrow-left fa-3x"></i></div></a>
     
 
@@ -89,6 +89,11 @@
 
       <div class="textbox">
         <input type="text" placeholder="Phone" id="txtphone" name="txtphone" value="" required onkeypress="return /[0-9]/i.test(event.key)" maxlength="10" pattern="([0-9]){10,}">
+      </div>
+
+      <div class="textbox">
+        <label style="color: white;">Profile Picture:</label>
+        <input type="file" id="profilePic" name="profilePic" accept="image/*" required>
       </div>
 
       <input class="btn" type="submit" value="Sign Up"> <br> <br>

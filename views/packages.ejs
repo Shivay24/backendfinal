@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Famous Tour Packages</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .packages-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .packages-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .packages-header h1 {
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .package-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .package-card:hover {
+            transform: translateY(-10px);
+        }
+        .package-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .package-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .package-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .package-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .package-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .package-price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .book-now-btn {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            font-weight: bold;
+        }
+        .book-now-btn:hover {
+            background-color: #2980b9;
+        }
+        .main-nav {
+            background: #e09e9e;
+            padding: 10px 0;
+            height: 80px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="main-nav">
+        <%- include('partials/header') %>
+    </div>
+
+    <div class="packages-container">
+        <div class="packages-header">
+            <h1>Famous Tour Packages</h1>
+            <p>Explore the world with our handpicked travel deals</p>
+        </div>
+
+        <div class="packages-grid">
+            <!-- Package 1: MakeMyTrip -->
+            <div class="package-card">
+                <img src="/images/destination/tajmahal1.jpg" alt="Golden Triangle" class="package-image">
+                <div class="package-content">
+                    <div class="package-title">Golden Triangle Tour</div>
+                    <p class="package-description">Explore the rich heritage of Delhi, Agra, and Jaipur. A journey through India's royal past.</p>
+                    <div class="package-footer">
+                        <span class="package-price">via MakeMyTrip</span>
+                        <a href="https://www.makemytrip.com/holidays-india/golden-triangle-travel-packages.html" target="_blank" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Package 2: Thomas Cook -->
+            <div class="package-card">
+                <img src="/images/destination/kerala1.jpg" alt="Kerala Backwaters" class="package-image">
+                <div class="package-content">
+                    <div class="package-title">Kerala Backwaters</div>
+                    <p class="package-description">Relax in the serene backwaters of Alleppey and explore the lush tea gardens of Munnar.</p>
+                    <div class="package-footer">
+                        <span class="package-price">via Thomas Cook</span>
+                        <a href="https://www.thomascook.in/holidays/india-tour-packages/kerala-tour-packages" target="_blank" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Package 3: Expedia -->
+            <div class="package-card">
+                <img src="/images/destination/goa1.jpg" alt="Goa Beach Vacation" class="package-image">
+                <div class="package-content">
+                    <div class="package-title">Goa Beach Bliss</div>
+                    <p class="package-description">Experience the vibrant nightlife and sunny beaches of Goa with exclusive resort stays.</p>
+                    <div class="package-footer">
+                        <span class="package-price">via Expedia</span>
+                        <a href="https://www.expedia.co.in/Goa.d6049928.Destination-Travel-Guides" target="_blank" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Package 4: Yatra -->
+            <div class="package-card">
+                <img src="/images/destination/ladakh1.jpg" alt="Ladakh Adventure" class="package-image">
+                <div class="package-content">
+                    <div class="package-title">Ladakh Adventure</div>
+                    <p class="package-description">A thrilling journey through high mountain passes and crystal clear lakes in the Himalayas.</p>
+                    <div class="package-footer">
+                        <span class="package-price">via Yatra</span>
+                        <a href="https://www.yatra.com/india-tour-packages/holidays-in-ladakh" target="_blank" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Package 5: TripAdvisor -->
+            <div class="package-card">
+                <img src="/images/destination/manali1.jpg" alt="Manali Getaway" class="package-image">
+                <div class="package-content">
+                    <div class="package-title">Manali Snow Escape</div>
+                    <p class="package-description">Enjoy the snow-capped peaks and adventure sports in the heart of Himachal Pradesh.</p>
+                    <div class="package-footer">
+                        <span class="package-price">via TripAdvisor</span>
+                        <a href="https://www.tripadvisor.in/Attractions-g304554-Activities-Manali_Manali_Tehsil_Kullu_District_Himachal_Pradesh.html" target="_blank" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Package 6: Booking.com -->
+            <div class="package-card">
+                <img src="/images/destination/rajasthan1.jpg" alt="Rajasthan Desert Safari" class="package-image">
+                <div class="package-content">
+                    <div class="package-title">Rajasthan Royal Safari</div>
+                    <p class="package-description">Discover the desert charms of Jaisalmer and the blue streets of Jodhpur.</p>
+                    <div class="package-footer">
+                        <span class="package-price">via Booking.com</span>
+                        <a href="https://www.booking.com/region/in/rajasthan.en-gb.html" target="_blank" class="book-now-btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <center><a href="/mainx" style="display: block; margin-top: 40px; text-decoration: none; color: #333; font-weight: bold;">Back to Dashboard</a></center>
+    </div>
+</body>
+</html>

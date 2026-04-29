@@ -231,6 +231,14 @@ app.get("/destination", authenticateJWT, function(req, resp) {
     });
 })
 
+app.get("/packages", authenticateJWT, function(req, resp) {
+    resp.render("packages", {
+        title: "Tour Packages",
+        username: req.session.username,
+        profilePic: req.session.profilePic
+    });
+})
+
 const destinationData = {
     goa: {
         name: "Goa",

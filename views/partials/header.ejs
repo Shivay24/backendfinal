@@ -1,25 +1,21 @@
-  <ul>
-  <ul class="list">
-    
-      <li class="logo"><a href="mainPage.html"><img src="/images/earth-globe.jpg" alt="Logo" style="width:36px;height:36px"></a></li>
-    
-  </ul>
-  <ul class="list2">
-    <% if (locals.username) { %>
-     <li style="color: white; margin-right: 20px;">
-       <% if (locals.profilePic) { %>
-         <img src="<%= profilePic %>" alt="Profile" style="width: 30px; height: 30px; border-radius: 50%; vertical-align: middle; margin-right: 10px;">
-       <% } %>
-       <a href="/profile" style="color: white; text-decoration: none;">Hello <%= username %></a>
-     </li>
-    <% } %>
-    <li><a href="/profile">Profile</a></li>
-    
-    <li class="active-menu"><a href="/mainx">Home</a></li>
-    <li><a id="long" href="/destination">Destination</a></li>
-    <li><a href="/gallery">Gallery</a></li>
-    <li><a href="/booking">Book Tour</a></li>
-    <li><a href="/feedback">Feedback</a></li>
-    <li><a href="/">Logout</a></li>
-  </ul>
+<ul class="list">
+  <li class="logo">
+    <a href="/mainx"><img src="/images/earth-globe.jpg" alt="Logo" style="width:36px;height:36px"></a>
+  </li>
+</ul>
+
+<ul class="list2">
+  <% if (locals.username) { %>
+    <li style="margin-right: 20px;">
+      <img src="<%= (locals.user && locals.user.profilePic) || locals.profilePic || '/images/default-profile.png' %>" alt="Profile" style="width: 30px; height: 30px; border-radius: 50%; vertical-align: middle; margin-right: 10px; object-fit: cover;">
+      <a href="/profile" style="text-decoration: none;">Hello <%= locals.username %></a>
+    </li>
+  <% } %>
+  <li><a href="/profile">Profile</a></li>
+  <li class="active-menu"><a href="/mainx">Home</a></li>
+  <li><a id="long" href="/destination">Destination</a></li>
+  <li><a href="/gallery">Gallery</a></li>
+  <li><a href="/booking">Book Tour</a></li>
+  <li><a href="/feedback">Feedback</a></li>
+  <li><a href="/">Logout</a></li>
 </ul>

@@ -40,15 +40,26 @@ app.use(cookieParser());
 const authenticateJWT = (req, resp, next) => {
     const token = req.cookies.token;
     if (token) {
-        jwt.verify(token, JWT_SECRET, (err, user) => {
+        jwt.verify(token, JWT_SECRET, async (err, tokenUser) => {
             if (err) {
                 return resp.redirect("/signin");
             }
-            req.user = user;
-            // Also sync session for backward compatibility with existing views
-            req.session.username = user.username;
-            req.session.profilePic = user.profilePic;
-            next();
+            try {
+                // Always read latest profile data from DB so navbar image stays in sync.
+                const dbUser = await User.findById(tokenUser.id);
+                if (!dbUser) {
+                    resp.clearCookie("token");
+                    return resp.redirect("/signin");
+                }
+
+                req.user = dbUser;
+                req.session.username = dbUser.username;
+                req.session.profilePic = dbUser.profilePic;
+                next();
+            } catch (dbErr) {
+                console.error("Auth middleware DB error:", dbErr);
+                return resp.redirect("/signin");
+            }
         });
     } else {
         resp.redirect("/signin");
@@ -148,6 +159,17 @@ app.get("/",function(req,resp){
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
+
+// Make auth user data available to all EJS views (shared navbar partial).
+app.use((req, res, next) => {
+    res.locals.username = req.session?.username || req.user?.username || null;
+    res.locals.profilePic = req.session?.profilePic || req.user?.profilePic || null;
+    res.locals.user = {
+        username: res.locals.username,
+        profilePic: res.locals.profilePic
+    };
+    next();
+});
 
 app.get("/signup",function(req,resp){
     resp.render("signup",{
@@ -318,7 +340,7 @@ const destinationData = {
     }
 };
 
-app.post("/destination_info", function(req, resp) {
+app.post("/destination_info", authenticateJWT, function(req, resp) {
     const place = Object.keys(req.body)[0]; // Get the key (e.g., 'goa', 'kerala')
     const destination = destinationData[place];
     

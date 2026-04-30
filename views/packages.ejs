@@ -91,9 +91,39 @@
         }
         .main-nav {
             background: #e09e9e;
-            padding: 10px 0;
-            height: 80px;
-            
+            padding: 10px 20px;
+            min-height: 90px;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            overflow: visible;
+        }
+        .main-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .main-nav .list {
+            position: static !important;
+            display: flex;
+            float: none;
+            margin: 0;
+            padding: 0;
+        }
+        .main-nav .list2 {
+            position: static !important;
+            display: flex;
+            transform: none !important;
+            top: auto !important;
+            left: auto !important;
+            margin: 0 0 0 auto;
+            padding: 0;
+            white-space: nowrap;
+        }
+        .main-nav .list2 li {
+            display: inline-flex;
+            align-items: center;
         }
     </style>
 </head>

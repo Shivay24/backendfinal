@@ -2,11 +2,11 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Century Gothic;
+    font-family: sans-serif;
   }
   
   body {
-    font-family: Verdana, sans-serif;
+    font-family: sans-serif;
     margin:0
   }
   
@@ -20,11 +20,20 @@
   .main{
     overflow: hidden;
     position: fixed;
-    background-color: rgba(135,206,250,0.4);
+    background-color: rgba(135,206,250,0.92);
     top: 0;
     width: 100vw;
     height: 8vh;
     max-width: 1550px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+  }
+
+  .main .list,
+  .main .list2 {
+    margin: 0;
+    padding: 0;
   }
   
   ul{
@@ -74,9 +83,26 @@
   }
   
   .list2{
-    position: relative;
-    top: -20px;
-    float: right;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    float: none;
+    margin: 0;
+    margin-top: 0;
+    margin-right: 0;
+    padding: 0;
+    white-space: nowrap;
+  }
+
+  .list2 li {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .list2 li a {
+    display: inline-flex;
+    align-items: center;
   }
   
   .list2 li a{
@@ -238,25 +264,29 @@
     top: 17px;
   }
   .contain .box{
+    position: relative;
     overflow: hidden;
     width: 320px;
     height: 270px;
     margin: 28px;
     box-sizing: border-box;
     display: inline-block;
-    transition: transform 2s;
+    transition: transform 0.4s ease;
   }
   .contain .box .imgBox{
     overflow: hidden;
+    height: 100%;
   }
   .contain .box .imgBox img{
-    max-width: 100%;
-    height: 300px;
-    transition: transform 2s;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    transform-origin: center center;
   }
   .contain .box:hover .imgBox img{
-    overflow: hidden;
-    transform: scale(1.2);
+    transform: scale(1.12);
   }
   .contain .destination-btn a{
     position: relative;
@@ -290,53 +320,65 @@
   }
   .contain .box .name-text{
     position: absolute;
-    top: 870px;
+    bottom: 12px;
+    right: 12px;
     color: white;
-    font-family: Helvetica;
-  }
-  .contain .box .left1{
-    left: 130px;
+    font-family: sans-serif;
+    text-align: right;
+    transition: all 0.35s ease;
+    pointer-events: auto;
   }
   .contain .box .name-text h2{
-    margin-top: 50px;
-    text-align: center;
-    transition: 0.6s ease;
+    margin: 0;
+    text-align: inherit;
+    transition: opacity 0.35s ease;
+    opacity: 0.95;
+    text-shadow: 0 0 8px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.6);
+    -webkit-text-stroke: 0.5px rgba(0,0,0,0.5);
+    font-weight: bold;
+    letter-spacing: 0.5px;
   }
   .contain .box .name-text a{
     position: relative;
-    display: none;
+    display: inline-block;
     border: 1px solid #fff;
-    padding: 5px 9px;
-    top: -5px;
+    border-radius: 5px;
+    padding: 8px 16px;
+    margin-top: 12px;
     color: #fff;
+    background: rgba(0,0,0,0.4);
     text-decoration: none;
-    transition: 0.6s ease;
+    transition: opacity 0.4s ease, background 0.3s ease;
     text-align: center;
-  }
-  .contain .box:hover .name-text h2{
-    margin-top: 5px;
-  }
-  .contain .box:hover .name-text a{
-    top: 15px;
-    display: block;
+    opacity: 0;
+    pointer-events: auto;
+    cursor: pointer;
+    font-weight: bold;
   }
   .contain .box .name-text a:hover{
-    background-color: #fff;
-    color: #000;
+    background: rgba(255,255,255,0.25);
+    color: #fff;
   }
-  .contain .box .left2{
-    left: 530px;
+  .contain .box:hover .name-text h2{
+    opacity: 1;
   }
-  .contain .box .left3{
-    left: 920px;
+  .contain .box:hover .name-text a{
+    opacity: 1;
   }
-  .contain .box .left4{
-    left: 1310px;
+  /* center overlay on hover */
+  .contain .box:hover .name-text{
+    bottom: auto;
+    right: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
   }
+
   footer
   {
     text-decoration: none;
-    font-family: Helvetica;
+    font-family: sans-serif;
     text-align:center;
     color:#fff;
     font-family:20px;
@@ -391,10 +433,12 @@
     }
     .list2{
       overflow: hidden;
-      position: fixed;
-      top: -10px;
-      left: 85%;
-      float: right;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      float: none;
+      margin: 0;
     }
   
     .title h1{

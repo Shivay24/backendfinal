@@ -2,7 +2,7 @@
 <html>
 <head>
   <title> Sign Up Form </title>
-  <meta name="viewport" content="width= device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="css/signup.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -60,9 +60,8 @@
 
 <body>
 
-<form method="POST" action="/signupd" enctype="multipart/form-data">
+<form method="POST" action="/signupd" enctype="multipart/form-data" class="signup-shell">
    <a href="/"><div class="abcd"> <i class="fa-solid fa-arrow-left fa-3x"></i></div></a>
-    
 
     <div class="login-box">
 
@@ -91,8 +90,8 @@
         <input type="text" placeholder="Phone" id="txtphone" name="txtphone" value="" required onkeypress="return /[0-9]/i.test(event.key)" maxlength="10" pattern="([0-9]){10,}">
       </div>
 
-      <div class="textbox">
-        <label style="color: white;">Profile Picture:</label>
+      <div class="textbox file-field">
+        <label style="color: grey;">Profile Picture:</label>
         <input type="file" id="profilePic" name="profilePic" accept="image/*" required>
       </div>
 

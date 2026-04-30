@@ -74,3 +74,45 @@ const swiper = new Swiper(".swiper", {
   spaceBetween: 20,
   loop: true,
 });
+
+const scrollContainer = document.querySelector(".container-scroll");
+const scrollTitle = document.querySelector(".container-scroll__title");
+const scrollCard = document.querySelector(".container-scroll__card");
+
+if (scrollContainer && scrollTitle && scrollCard) {
+  let ticking = false;
+
+  const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+  const updateScrollCardAnimation = () => {
+    const rect = scrollContainer.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const totalRange = rect.height + viewportHeight;
+    const rawProgress = (viewportHeight - rect.top) / totalRange;
+    const progress = clamp(rawProgress, 0, 1);
+    const isMobile = window.innerWidth <= 768;
+
+    const rotateX = 20 * (1 - progress);
+    const translateY = -100 * progress;
+    const startScale = isMobile ? 0.7 : 1.05;
+    const endScale = isMobile ? 0.9 : 1;
+    const scale = startScale + (endScale - startScale) * progress;
+
+    scrollTitle.style.transform = `translate3d(0, ${translateY}px, 0)`;
+    scrollCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) scale(${scale})`;
+  };
+
+  const onScroll = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateScrollCardAnimation();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
+
+  updateScrollCardAnimation();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", updateScrollCardAnimation);
+}

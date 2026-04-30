@@ -23,6 +23,7 @@ const scrollRevealOption = {
 ScrollReveal().reveal(".header__image img", {
   ...scrollRevealOption,
   origin: "right",
+  duration: 1400,
 });
 ScrollReveal().reveal(".header__content p", {
   ...scrollRevealOption,

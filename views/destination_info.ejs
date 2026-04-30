@@ -67,11 +67,46 @@
             background-color: #555;
         }
         .main-nav {
-            background: #333;
-            padding: 10px 0;
-            height: 80px;
-        
-            
+            background: cornflowerblue;
+            padding: 0;
+            height: auto;
+            min-height: 90px;
+            width: 100%;
+            position: static;
+            overflow: visible;
+            display: flex;
+            align-items: center;
+        }
+        .main-nav .main {
+            overflow: visible;
+            position: static;
+            background: transparent;
+            top: auto;
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            z-index: auto;
+        }
+        .main-nav .list {
+            position: static !important;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            float: none;
+        }
+        .main-nav .list2 {
+            position: static !important;
+            display: flex;
+            transform: none !important;
+            top: auto !important;
+            left: auto !important;
+            margin: 0 0 0 auto;
+            padding: 0;
+            white-space: nowrap;
         }
     </style>
 </head>
